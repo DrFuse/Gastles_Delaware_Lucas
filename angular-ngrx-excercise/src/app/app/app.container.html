@@ -1,0 +1,11 @@
+<app-header [sizeSelection]="sandbox.selectedSize$ | async"></app-header>
+
+
+<div class="persons-container">
+  <div *ngIf="sandbox.loading$ | async">Loading</div>
+  <app-person
+    [person]="person"
+    (toggleSelected)="sandbox.toggleSelectPerson(person)"
+    *ngFor="let person of (sandbox.persons$ | async); trackBy: trackByFn"
+  ></app-person>
+</div>
